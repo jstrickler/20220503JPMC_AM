@@ -32,12 +32,13 @@ print()
 
 
 class MyIterator(Iterator):  # <9>
-    data = 'a', 'b', 'c'
-    index = 0
+    def __init__(self):
+        self.data = 'a', 'b', 'c'
+        self.index = 0
 
     def __next__(self):  # <10>
         if self.index >= len(self.data):
-            raise StopIteration
+            raise StopIteration # stop iterating
         else:
             return_val = self.data[self.index]
             self.index += 1
@@ -50,3 +51,14 @@ for i in m:  # <12>
 print()
 
 print(hasattr(m, '__iter__'))  # <12>
+
+class Spam:
+    def __init__(self, value):
+        self._value = value
+
+    def __add__(self, other):
+        return self._value + other._value
+
+s1 = Spam(10)
+s2 = Spam(18)
+print(s1 + s2)

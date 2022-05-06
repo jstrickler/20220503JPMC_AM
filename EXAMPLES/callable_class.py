@@ -17,14 +17,14 @@ class HTMLWrapper():
 
 if __name__ == '__main__':
     # non-callable class
-    t = TagWrapper('h1')
-    print(t.wrap('foo'))
-    print(t.wrap('bar'))
+    h1 = TagWrapper('h1')
+    print(h1.wrap('foo'))
+    print(h1.wrap('bar'))
     print()
 
     # callable class
     h1 = HTMLWrapper('h1')  # <2>
-    print(h1('spam'))  # <3>
+    print(h1('spam'))  # implicitly invoke h1.__call__()
     div = HTMLWrapper('div')
     print(div('ham'))
     print(div('toast'))

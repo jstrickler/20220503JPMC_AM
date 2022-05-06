@@ -5,10 +5,12 @@
 Created on Thu Mar 21 00:20:43 2013
 
 """
-import zipfile
+from zipfile import ZipFile
 
-zfile = zipfile.ZipFile('potus.zip','w')
-zfile.write('save_potus_info.py')
-zfile.write('read_potus_info.py')
-zfile.write('potus.pic')
-zfile.close()
+with ZipFile('potus.zip','w') as zfile:
+    zfile.write('save_potus_info.py')
+    zfile.write('read_potus_info.py')
+    zfile.write('potus.pic')
+
+with ZipFile('potus.zip') as zfile_in:
+    print(zfile_in.namelist())

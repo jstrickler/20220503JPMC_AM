@@ -8,7 +8,7 @@ Created on Wed Mar 20 23:52:46 2013
 import pickle
 from collections import namedtuple
 
-fields = 'term firstname lastname birthstate party'
+fields = 'term firstname lastname birthplace birthstate party'
 President = namedtuple('President', fields)
 
 # note: In Real Life, definition of President would be

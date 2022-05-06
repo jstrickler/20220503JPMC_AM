@@ -3,9 +3,10 @@
 from itertools import chain, takewhile, dropwhile
 
 spam = ['alpha', 'beta', 'gamma']
-ham = ['delta', 'epsilon', 'zeta']
+ham = 'delta', 'epsilon', 'zeta'
+eggs = 'fried'
 
-for letter in chain(spam, ham):  # <1>
+for letter in chain(spam, ham, eggs):  # <1>
     print(letter, end=' ')
 print("\n")
 
@@ -14,6 +15,19 @@ eggs = [spam, ham]
 for letter in chain.from_iterable(eggs):  # <2>
     print(letter, end=' ')
 print("\n")
+
+x = [
+    ['a', 'b', 'c'],
+    ['d', 'e', 'f'],
+]
+for thing in x:
+    print(thing)
+print()
+
+for thing in chain.from_iterable(x):
+    print(thing)
+print()
+
 
 fruits = ["pomegranate", "cherry", "apricot", "date", "apple",
           "lemon", "kiwi", "orange", "lime", "watermelon", "guava",

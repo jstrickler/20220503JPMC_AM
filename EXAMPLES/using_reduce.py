@@ -17,7 +17,7 @@ print("result is", result)
 result = reduce(mul, values)  # <3>
 print("result is", result)
 
-strings = ['fi', 'fi', 'fo', 'fum']
+strings = ['fee', 'fi', 'fo', 'fum']
 
 # join
 result = reduce(add, strings, "") # <4>

@@ -16,11 +16,17 @@ dates = [
     (1927, 12, 7),
 ]  # <1>
 
+
 for dt in dates:
+    print(dt, end=' -> ')
     d = date(*dt)  # <2>
     print(d)
 
-print()
+date_list = [date(*dt) for dt in dates]
+print("date_list: {}".format(date_list))
+
+
+print('-' * 60)
 
 fruits = ["pomegranate", "cherry", "apricot", "date", "Apple", "lemon", "Kiwi",
           "ORANGE", "lime", "Watermelon", "guava", "papaya", "FIG", "pear",
@@ -34,3 +40,4 @@ sort_opts = {
 
 sorted_fruits = sorted(fruits, **sort_opts)  # <4>
 print(sorted_fruits)
+

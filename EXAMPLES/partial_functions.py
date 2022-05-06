@@ -6,9 +6,9 @@ from functools import partial
 
 count_by = partial(range, 0, 25)  # <1>
 
-print((list(count_by(1))))  # <2>
-print((list(count_by(3))))  # <2>
-print((list(count_by(5))))  # <2>
+print((list(count_by(1))))  # <2>  range(0, 25, 1)
+print((list(count_by(3))))  # <2>  range(0, 25, 3)
+print((list(count_by(5))))  # <2>  range(0, 25, 5)
 print()
 
 has_a_number = partial(re.search, r'\d+')  # <3>

@@ -4,5 +4,9 @@ def trimmed(file_name):
             yield line.rstrip('\n\r')  # <1>
 
 mary_in = trimmed('../DATA/mary.txt')
-for trimmed_line in mary_in:
+
+line1 = next(mary_in)
+line2 = next(mary_in)
+
+for trimmed_line in mary_in:  # next(mary_in)
     print(trimmed_line)

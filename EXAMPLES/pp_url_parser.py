@@ -39,6 +39,14 @@ path = Combine(
     + OneOrMore(~query + Word(url_chars + '/'))
 )('path')  # <14>
 
+def convert_port(tokens):
+    # print("tokens: {}".format(tokens))
+    if tokens[0]:
+        tokens[0] = int(tokens[0])
+    return tokens
+
+port.setParseAction(convert_port)
+
 url_parser = (
     scheme
     + Suppress('://')

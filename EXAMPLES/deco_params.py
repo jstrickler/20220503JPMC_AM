@@ -23,6 +23,10 @@ def multiply(multiplier): # <2>
 def spam():
     return 5
 
+# spam = multiply(4)(spam)
+#
+# temp = multiply(4)
+# spam = temp(spam)
 
 @multiply(10)
 def ham():
@@ -31,3 +35,11 @@ def ham():
 a = spam()
 b = ham()
 print(a, b)
+
+@multiply(60)
+def line():
+    return '-'
+
+print(line())
+
+

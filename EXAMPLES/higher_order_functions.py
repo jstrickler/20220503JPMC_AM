@@ -23,6 +23,17 @@ print(f2, "\n")
 f3 = process_list(fruits, len)  # <5>
 print(f3, "\n")
 
+def abbr(s):
+    return s[:3]  # first 3 characters
+
+f4 = process_list(fruits, abbr)
+print(f4, '\n')
+
 total_length = sum(process_list(fruits, len))  # <6>
 
 print(total_length, "\n")
+
+result = map(str.upper, fruits)
+print(result)
+print(list(result))
+print(list(result))

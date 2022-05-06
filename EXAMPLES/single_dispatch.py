@@ -1,8 +1,5 @@
-#!/usr/bin/env python
-#
 from singledispatch import singledispatch
 from io import TextIOWrapper
-
 
 @singledispatch
 def xopen(source, mode="r"):  # <1>
@@ -11,17 +8,17 @@ def xopen(source, mode="r"):  # <1>
 
 
 @xopen.register(TextIOWrapper)  # <2>
-def _(fileobj):
+def _file_obj(fileobj):
     return fileobj
 
 
 @xopen.register(str)  # <3>
-def _(str, mode="r"):
+def _str(str, mode="r"):
     return open(str, mode)
 
 
 @xopen.register(bytes)  # <4>
-def _(bytes, mode="r"):
+def _bytes(bytes, mode="r"):
     return open(bytes.decode(), mode)
 
 

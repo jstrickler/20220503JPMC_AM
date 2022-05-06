@@ -2,10 +2,12 @@
 import random
 import queue
 from threading import Thread, Lock as tlock
+from multiprocessing import Process
 import time
+import pdb
 
 NUM_ITEMS = 25000
-POOL_SIZE = 100
+POOL_SIZE = 64
 
 q = queue.Queue(0)  # <1>
 
@@ -24,10 +26,10 @@ class RandomWord():  # <3>
         return self._words[random.randrange(0, self._num_words)]
 
 
-class Worker(Thread):  # <4>
+class Worker(Process):  # <4>
 
     def __init__(self, name):  # <5>
-        Thread.__init__(self)
+        super().__init__()
         self.name = name
 
     def run(self):  # <6>
@@ -41,29 +43,30 @@ class Worker(Thread):  # <4>
             except queue.Empty:  # <9>
                 break
 
+if __name__ == '__main__':
 
 # <10>
-random_word = RandomWord()
-for i in range(NUM_ITEMS):
-    w = random_word()
-    q.put(w)
+    random_word = RandomWord()
+    for i in range(NUM_ITEMS):
+        w = random_word()
+        q.put(w)
 
-start_time = time.ctime()
+    start_time = time.ctime()
 
-# <11>
-pool = []
-for i in range(POOL_SIZE):
-    worker_name = "Worker {:c}".format(i + 65)
-    w = Worker(worker_name)  # <12>
-    w.start()  # <13>
-    pool.append(w)
+    # <11>
+    pool = []
+    for i in range(POOL_SIZE):
+        worker_name = "Worker {:c}".format(i + 65)
+        w = Worker(worker_name)  # <12>
+        w.start()  # <13>
+        pool.append(w)
 
-for t in pool:
-    t.join()  # <14>
+    for t in pool:
+        t.join()  # <14>
 
-end_time = time.ctime()
+    end_time = time.ctime()
 
-print(shared_list[:20])
+    print(shared_list[:20])
 
-print(start_time)
-print(end_time)
+    print(start_time)
+    print(end_time)
