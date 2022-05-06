@@ -1,6 +1,7 @@
 import time
 import asyncio
 import aiohttp
+import pdb
 from omdblib import OMDBasync
 from nfrtitles import  get_nfr_title_list
 
@@ -10,6 +11,7 @@ start_time = time.time()
 
 async def get_rt_rating(title, session, omdb):
     movie = await omdb.title_search(title, session=session)
+    # pdb.set_trace()
     return movie.rotten_tomatoes_score
 
 

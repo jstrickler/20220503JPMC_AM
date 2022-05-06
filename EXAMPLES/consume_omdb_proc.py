@@ -5,14 +5,15 @@ from nfrtitles import  get_nfr_title_list
 
 movie_titles = get_nfr_title_list()
 
+omdb = OMDB("b87452b6")
+
 
 def get_rt_score(title):
     movie = omdb.title_search(title)
     return movie.rotten_tomatoes_score
 
 if __name__ == '__main__':
-    omdb = OMDB("b87452b6")
-    process_pool = Pool(processes=128)
+    process_pool = Pool(processes=32)
 
     start_time = time.time()
 
